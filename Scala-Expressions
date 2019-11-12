@@ -1,0 +1,37 @@
+Expressions are evaluated to some value.
+eg. val x = 1+2; //1+2 is expression
+
+Math Expressions
+===================
++ * - / % & | ^(exclusive) << >> >>>(specific to scala rarely used)
+
+relatinal expression
+================
+1 == 2 etc
+
+boolean operators
+
+Instruction vs expression
+==============================
+instruction is to tell something to do to computer
+eg change the var, print, do this do that so and so forth
+
+expression is something that has a value.
+if expression
+val x=true;
+val aconditionedvalue = if (x) 5 else 3; // if (x) 5 else 3 is expression
+or print(if (x) 5 else 3) prints 5
+
+// never write while loop like code in scala as it is imparative coding
+
+// everything in scala is expression
+
+// side effects: println, while , reassigning
+
+// code blocks
+val aCodeBlock = {
+val x=0
+print(x)
+}
+this is code block is an expression and value of block is the value of last expression
+
