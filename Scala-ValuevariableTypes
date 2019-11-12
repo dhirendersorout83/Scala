@@ -1,0 +1,10 @@
+Data Tupes in scala:
+Int,double,long,float,short
+String,char
+boolean,
+
+Val are immutable and type is option while declaration.
+val x : Int =42;
+//compiler can infer types
+
+variables: key word is var
