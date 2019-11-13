@@ -1,0 +1,43 @@
+Stack and Tail Recursion:
+Stack recursion : Scala uses to stack to store the intermediate results. prolem with this approach is, if operation are very large than
+lots of memory would be required and can lead to stackOverflow error.
+
+Recursive:
+def fact(n): Int ={
+	if n <= 1 1
+	else 
+  println("computing fact of 10") // leads to stack
+  val result = n * fact(n-1)
+  println("computed fact of 10") //getting computed by poping up from stack
+  result
+}
+
+Tail recursion: In tail recursion, we are storing the intermediate result to be used later
+and same stack memory is used for further calculation.
+Any function can be turned into Tail recursive function using accumulators(on1 or more)
+def fact(n:Int) = {
+
+  def factHelp(x : Int, accumulator:Int)=
+  if (x <=1) accumulator
+  else factHelp(x-1,x*accumulator)
+  
+  factHelp(n,1) // for tail recursive , use function cal as the last expresion in code block
+}
+
+// when we use loops, use tail recursive
+
+//Concate string and no of time
+def concat(aString :String,n:Int):String = {
+  def concatHelp(aString:String,x:Int, accu:String):String=
+    if x <= 0 accu
+    else concatHelp(aString,x-1,accu*aString)
+   
+   concatHelp(aString,n,"")
+   }
+   
+// fibonacci no with tail recursive
+def fibo(n:Int):Int = {
+  def fiboHelp(x:Int,accu:Int):Int=
+  if x <=2 accu
+  else fiboHelp(x-1,)
+}
