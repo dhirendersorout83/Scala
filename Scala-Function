@@ -1,0 +1,33 @@
+Define function
+def aFunction(a:String, b : Int) : Int = 
+ a+" "+b
+
+def aFunction(a:String, b : Int) : Int = {
+ a+" "+b
+ }
+ 
+ println(aFunction("hello", 3))
+ 
+ def aFunction() : Int = 42
+ 
+ def aFunction() : Int = 42
+ 
+ println(aFunction())
+ println(aFunction) //paranthesis less calling
+ // recursive function
+ def aRepeatedFunction(aString:String, n:Int)={
+    if (n==1) aString
+    else aString + aRepeatedFunction(aString,n-1);
+ }
+ 
+ println(aRepeatedFunction("hello",3))
+ 
+ scala can also infer the return type of Function as well but not the return type of recursive function
+ 
+ Auxiliary functions
+ ============================
+ def aBigFunction(n:Int)={
+    def aSamllFunction(aString:Int, n:Int):Int= a+b
+    aSmallFunction(n,n-1)
+ }
+ 
