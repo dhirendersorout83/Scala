@@ -1,0 +1,39 @@
+eg. tail recursive function
+@tailrec
+def tailRec(n :Int):Int = {
+  def tailFucn(x:Int,accu:Int):Int =
+    if x <=1 accu
+    else tailFucn(n-1,n*accu)
+    tailFunc(n,1)
+    }
+to pass the default value, scala allows us to do that like = value at parameter level    
+
+def tailRec(n :Int):Int = {
+  def tailFucn(x:Int,accu:Int = 1):Int =
+    if x <=1 accu
+    else tailFucn(n-1,n*accu)
+    tailFunc(n)
+}    
+
+
+//challanges
+
+def savepic(format:string ="jpg",hight:int, width:int);
+//call like savepic(800,700)
+
+So the leading parameters are with default values.
+They cannot be really emitted because that would confuse the compiler.
+
+OR
+
+def savepic(format:string ="jpg",hight:int =800, width:int=900);
+But if I do pass in a value here let's say eight hundred four with the compiler would be confused because
+savepic(800)
+it doesn't know which parameter this value stands for.    
+
+solution for this is:
+1. pass in every leading argument
+  savepic("bmp"); //rest two args campiler can immit
+2. name the argument
+  savepic(width => 800) // we can pass the named args in any order like
+  savepic(width => 800, format = "jpg")
