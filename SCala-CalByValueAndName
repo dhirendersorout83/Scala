@@ -1,0 +1,27 @@
+def callByValue(x: long):Unit{
+  println("call by value "+x)
+  println("call by value "+x)
+}
+
+def callByName(x: => long):Unit{
+  println("call by value "+x)
+  println("call by value "+x)
+}
+//calling
+callByValue(System.nanoTime);//here values of println in both print statement will be same
+callByname(System.nanoTime);//here values of println in both print statement will be different. value passes as is and evaluates every time at different times. in the by named call this expression is passed literally as is.
+
+=> make the above function call by name. Now this little arrow here tells the compiler that the parameter will be called by name.
+
+in call by value, expression evaluated before call to fucntion.
+
+eg.
+def infinite():Int = 1 + infinite()
+
+def printFirst(x :  int , y: => Int) = println(x)
+
+//call
+printFrist(infinite(),34) // lead to stackoverflow error as infinite evaluated before function call and lead to error
+
+// but below will not lead to error
+printFrist(34,infinite())
