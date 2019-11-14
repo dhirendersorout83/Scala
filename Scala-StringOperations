@@ -1,0 +1,63 @@
+val str:Strig ="help"
+
+str.charAt()
+str.substring(7,11)
+str.split(" ").toList()
+str.startWith("helo") return boolean
+str.replace(" ","-")
+str.toLowerCase()
+str.length
+
+val anumString = "45"
+val anum = anumstring.toInt
+
+// prepending and appending
+'a' +: anumstring :+ 'z' =========> a45z
+str.reverse
+str.take(2)
+
+//string interpolation : scala specific
+============================================
+//s-interpolation
+val name = "david"
+val age = 45
+val greeting = s"i am $name and i am $age years old" // if we remove s $ will be taken as litral
+
+As inter-related strings also have the property that they can evaluate complex expressions.
+val greeting = s"i am $name and i am turning ${age+1}age years old"
+
+So this is a very cute way of injecting names or values or even complex expressions inside strings without actually needing to decompose the string into its proper constituents and concatenating them at the
+
+//f(format) interpolators
+val speed = 1.2f
+val name ="david"
+val myth = f"$name%s can eat with speed $speed%2.2f"
+
+println(myth) // i can eat with speed 1.20 
+
+Now f inter-relate the strings also have the amazing property that they can also check for type correctness
+So for example I have the value X which is a float and the string representation calls for dollar X
+
+which expands X but with percent three d forment which expects a integer number.
+This will force the compiler to evaluate the type of x which will be expended and if the types don't match, gives error
+
+val myth = f"$name%s can eat with speed $speed%2d" // give error beause of type matching by compiler
+
+//row - interpolator
+the raw interpolator works the same as the Estan triplet interpolator although it has the property they
+
+can print characters literally.
+
+So if I print for example the raw interpolated string.
+
+This is a backslash and newline backslash and are usually escaped and printed as a new line.
+
+println(row"this is \n character") // this is \n character
+the strings ignores escaped characters inside raw characters in the string.
+
+Otherwise injected variables do get escaped all right.
+eg. 
+val escape = "this is \n next line"
+println(row"$escape") prints like
+this is 
+next line
