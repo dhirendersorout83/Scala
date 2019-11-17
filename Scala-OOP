@@ -1,0 +1,71 @@
+Class,Parameters, Fields, COnstructors, methods, overloading
+===========================================================
+Class parameters are not class fields
+eg. class Person(name:String, age:Int);
+//here name and age are class parameters and we can not access class parameters with class object.
+
+BUT IF WE ADD VAL/VAR WITH CLASS PARAMETERS, THEY ACTS AS CALSS FIELDS
+
+Inside class, apart from variable and method, we can have other class, expressions. we can have any thing we a code block can have.
+
+Every single expression in class definition, evaluates before object instaintiation.
+class Person(name:Stirng, val age:Int){
+  val x =2
+  println(1+3) //
+  //inside class call method
+  def greet(name:String):Unit=println(s$"${this.name} says, hi $name") // $name mean, parameter name passed to greet. use this. to refer class //fields
+}
+object oopbasics extends App{
+Person per = new Person("Ram",27);
+println(per.x)
+}
+
+output wil be:
+4
+27
+
+
+// overloading constructors
+===========================
+we define overload construtcor by use def this
+def this(name :String) = this(name,0)
+def this() = this("john") //second cons
+or 
+def this() = this("john",0) primary cons
+
+This is the only implementation that an auxiliary constructor can have.
+Which is to call another constructor a primary or secondary.
+
+Now this limitation makes the auxiliary constructor is quite impractical because they're only used in
+practice for default parameters.
+
+For example I declared this constructor just admit the age parameter so this could be more easily solved
+by supplying a default parameter to the actual class definition so we won't actually need this new auxilary
+constructor.
+
+// counter class for
+1. increament
+2. decrement
+3. overload fo inc and passing a value for increse
+
+class Counter(val count:Int){
+def inc: = {prinltn("increamenting");new Counter(count+1);}
+def dec = {prinltn("decreamenting");new Counter(count-1);}
+//overload 
+def inc(num:Int)= new Counter(count + num)
+def dec(num:Int)= new Counter(count - num)
+
+//overload with recursion
+def inc(num:Int):Counter= {
+  if n<=0 then this
+  else inc.inc(n-1)
+}
+
+//overload with recursion
+def dec(num:Int):Counter= {
+  if n<=0 then this
+  else dec.dec(n-1)
+}
+
+
+}
