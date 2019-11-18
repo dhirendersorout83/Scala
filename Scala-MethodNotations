@@ -1,0 +1,122 @@
+eg.
+class Person(val name:String,favoritemovie: String){
+def likes(movie:String):Boolean = movie == favoritemovie
+def hangsOutWith(person:Person)=s"this.name hangs out with person.name"
+def unary_! :String = "hello !"
+}
+
+val per = new Person("Marry","Inception")
+// below 2 statement yields same results
+per.likes("Inception")
+per likes "Inception" // this is call operator/infix notation and only works with methods which have one parameter
+
+
+
+Operators in scala
+====================
+
+Now the thing is that Scala actually has an extremely permissive method naming scheme.
+
+So if I actually rename this method to have the name and or plus that's actually a valid method.
+def +(person:Person)=s"this.name hangs out with person.name"
+
+So if I say Mary + Tom that's actually calling the method called + in the class person this is
+
+supercool and this is what makes school extremely enjoyable to work with because it gives you such freedom
+
+to name your methods as you want.
+
+ALL OPERATORS IN SCALA ARE METHODS
+
+Infix notation is called syntactic suger
+=========================================
+Now the next thing that I want to talk about is prefix notation.
+
+By the way this style of writing methods of calling methods in infix notation is called syntactic sugar.
+
+An example of syntactic sugar syntactic sugars are nicer ways of writing code that are equivalent to
+
+more complex or more cumbersome ways of writing code.
+
+So the syntactic sugar is more resemblant of natural language and Scala offers this kind of conduct
+
+So negative 1 is actually equivalent to one dot urinary underscore minus.
+val x = -1 // equivalant to 1.unary_-
+
+So Urey operators are actually methods with unary_ prefixed.
+
+So negative 1 here is equivalent with one dot Junichi underscore minus.
+
+Now the unity underscore prefix.
+
+I'm going to write it here so that you have time to write it yourself.
+
+So the underscore prefix only works with a few operators.
+- + ~ !(bang) operators
+Note again that this unity underscores scheme only works with these four operators plus minus Tilda
+
+Postfix notation
+==============================
+class Person(val name:String,favoritemovie: String){
+def likes(movie:String):Boolean = movie == favoritemovie
+def hangsOutWith(person:Person)=s"this.name hangs out with person.name"
+def unary_! :String = "hello !"
+def isAlive : Boolean = true
+}
+That is the function does not receive any parameters.
+The functions that do not receive any parameters have the property that they can be used in a postfix
+notation.
+per.isAlive or per isAlive
+And in practice we often use the dot notation.
+
+This one because the space notation the postfix notation can introduce potential ambiguities when reading
+
+the code.
+
+Not to the compiler but to us as humans if you do want to use it.
+
+Postfix operator notation is only available to methods without parameters.
+
+Apply method in scala
+===============================
+class Person(val name:String,favoritemovie: String){
+def likes(movie:String):Boolean = movie == favoritemovie
+def hangsOutWith(person:Person)=s"this.name hangs out with person.name"
+def unary_! :String = "hello !"
+def isAlive : Boolean = true
+def apply():String = "hi my name is $name. my favorite movie is $fname"
+
+}
+to call apply method, we use
+marry.apply()
+or marry() 
+
+But the trick if I say Merry Prince is parentheses.
+
+This has the same effect so no this how the compiler does not complain.
+
+I can basically quote unquote call Mary as if it were a function and that is because I've defined and
+
+apply method in the person class.
+
+So whenever you see whenever the compiler actually whenever the compiler sees an object being called
+
+like a function it actually looks for a definition of apply in that particular class.
+
+So in this case we have a apply defined with no parameters.
+
+So the compiler does not really complain that I've called Mary like a function with no parameters because
+
+the compiler will actually delegate to the apply method.
+
+So these two print line statements are equivalent.
+
+================================
+excercise:
+class Person(val name:String,favoritemovie: String,age:Int = 0){
+def +(nickname:String): Person = new Person(s"$name($nickname)",favoritemovie)
+def unary_+ : Person = new Person(name,fmovie,age+1)
+def learns(thing:String) = s"$name is learning $thing"
+def learnscala = this learns "scala"
+def apply(num : Int) = s"$name watched $fmovie $num times"
+}
