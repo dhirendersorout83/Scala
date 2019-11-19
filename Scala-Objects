@@ -1,2 +1,163 @@
 SCALA DOES NOT HAVE A CLASS LEVEL FUNCTIONALITY LIke static in java.
-I has object
+It has object.
+synatax
+Object main extends App{
+object Person{
+val N_EYES:Int = 4
+def canFly = true
+}
+println(Person.N_EYES)
+}
+
+But before that just know that an object can have values or VARs and can also have method definitions.
+
+So if I defined a method can fly which returns a boolean and I suppose the implementation is false then
+
+this is a valid method definition.
+
+So objects can be defined in a similar way that classes can with the exception that objects do not receive
+
+Scala Object vs Java Static
+==============================
+scala: We use an object as a singleton instance.
+So the object is it's own type person plus it is it's only instance that is if I create a vowel it's
+a Mary and I attribute the value person with a capital P to Mary this thing is an instance.
+
+Object main extends App{
+object Person{
+val N_EYES:Int = 4
+def canFly = true
+}
+println(Person.N_EYES)
+val marry =Person
+val john =Person
+println(marry == john) //returns true
+}
+
+So another advantage of Skoll objects is that they are singleton instances by definition without any other code needed from you.
+Now a pattern that's often used in practice is that we write objects and classes with the same name.
+So class person in the same file or even the same scope for practical reasons this is just separate
+instance level functionality.
+From quote unquote static or class level functionality.
+So we split the functionality between classes and objects.
+This pattern of writing classes and objects with the same name in the same scope is called companions.
+So the class person and the object person are companions because they reside in the same scope and have
+the same name.
+
+So what we achieve here in this design with companions is that the whole code that will ever write will
+reside in either a class and we can access it from an instance or it will reside inside of a singleton
+object and we can access that by accessing the singleton object.
+Which means that all the code that will ever going to access will be accessed from some kind of instance
+either a regular instance or the singleton instance that means call is actually a truly object oriented
+language.
+
+Now if you also declare a companion class for this say class person then this statement is not entirely
+true as we can instantiate the class
+
+
+Object main extends App{
+object Person{
+val N_EYES:Int = 4
+def canFly = true
+}
+class Person{
+}
+println(Person.N_EYES)
+val marry =Person
+val john =Person
+println(marry == john) //returns true
+
+val marry = new Person
+val john = new Person
+println(marry == john) //returns false
+
+}
+
+//factory methods in object
+function in companian object is called
+Object main extends App{
+object Person{
+val N_EYES:Int = 4
+def canFly = true
+def from(mother:Person,father:Person):Person = new Person("boby")
+//same can also be defined as
+def apply(mother:Person,father:Person):Person = new Person("boby")
+}
+class Person{
+}
+println(Person.N_EYES)
+val marry =Person
+val john =Person
+println(marry == john) //returns true
+
+val marry = new Person
+val john = new Person
+println(marry == john) //returns false
+val child = Person.from(marry,john);
+or
+val child = Person.apply(marry,john);
+val child = Person(marry,john);//
+//Then this from/apply method is called a factory method because its sole purpose is to build persons given
+//some parameters.
+}
+but often in practice these factory methods are called in a very convenient way plie instead of some
+other name.
+So instead of from we can simply call apply with and John or we can actually do it apply all together
+and make it a person singleton object callable like a function which is pretty darn cool.
+
+So this actually looks like a constructor with a small difference that this is actually the apply method
+in the person singleton object. So this pattern is widely used in practice.
+
+// scala application: is only a scala object with
+// def main(args:Array[String]):Unit
+
+Now the method needs to have this exact definition with returning unit at the end because all applications
+are turned into Java Virtual Machine applications whose entry point have to be static public static
+void main with an array of string as a parameter.
+Now we've seen that the void return type in this call is unit and the static in Java is translated into
+a single plane method in Skala objects.
+
+So Skoll applications have to be sköll objects with this method.
+So if I delete for example the extents App from object definition, code will not run.
+// below code will not execute but after defining def main(args:Array[String]):Unit, it will run
+Object main {
+object Person{
+val N_EYES:Int = 4
+def canFly = true
+def from(mother:Person,father:Person):Person = new Person("boby")
+//same can also be defined as
+def apply(mother:Person,father:Person):Person = new Person("boby")
+}
+class Person{
+}
+println(Person.N_EYES)
+val marry =Person
+val john =Person
+println(marry == john) //returns true
+}
+
+Object main {
+object Person{
+val N_EYES:Int = 4
+def canFly = true
+def from(mother:Person,father:Person):Person = new Person("boby")
+//same can also be defined as
+def apply(mother:Person,father:Person):Person = new Person("boby")
+}
+class Person{
+}
+  def main(args:Array[String]):Unit{
+    println(Person.N_EYES)
+    val marry =Person
+    val john =Person
+    println(marry == john) //returns true
+  }
+}
+now above code will run again
+
+A major advantage of scal objects is that they can implement the singleton pattern in one line of code
+or without any other boilerplate or any other code whatsoever needed from you.
+
+We've also discussed that Scott objects and called classes can stay in the same scope and these are
+called companions companions can access each other's private members and as we will see later in the
+
