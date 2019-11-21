@@ -1,0 +1,54 @@
+Single class inheritence. same as java and other languages
+
+//Constructor
+class Person(name:String,age:int)
+class adult(name:Stirng,age:Int,idcard:String) extends Person // this will not compile because Person class has no default cunstructor without parameters. So we have to define a cinstructor without parameter or use parameters with class
+
+class Person(name:String,age:int){
+  def this (name)=new Person($name,0)
+  def this ()=new Person("NA")
+}
+class adult(name:Stirng,age:Int,idcard:String) extends Person // this is valid
+
+//override
+//override val variables
+class Animal(){
+val creatureType = "wild"
+def eat = println("puch puch")
+}
+class Dog(){
+override val creatureType="domestic"
+override def eat = println("crunch crunch")
+}
+
+Let's just comment this out and prove this of course.
+Now fields as opposed to methods have the special property that they can be overridden directly in the
+constructor as well.
+So if my copy this definition is copied do not cut it and actually pass this as a class parameter.
+This actually overrides the value creature type.
+
+class Animal(){
+val creatureType = "wild"
+def eat = println("puch puch")
+}
+class Dog(override val creatureType:String){ //this is valid
+override val creatureType="domestic"
+override def eat = println("crunch crunch")
+}
+
+//type substitution:Polimorphism
+val unknownAnimal:Animal = new Dog("KP")
+unknownAnimal.eat // call latest overriden version of eat method
+
+//Prevent the overriding
+1. use keyword final
+2. final can be used on class: prevent class to be extended
+3. to seal the class by sealed keyword: so in this file only but prevents extension in other files.
+So if I see all the class animal by using the keyword ceiled then the extension of class animal with
+the subclasses cat and dog in this file are valid.
+But if I try to extend animal in another file then that would be illegal.
+The ceiled key word is often used when you want to be exhaustive in your type hierarchy.
+
+
+
+
