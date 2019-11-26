@@ -1,0 +1,30 @@
+Object Application extends App{
+  class abstract Animal{
+  val creatureType:String
+  def eat:Unit
+  }
+  class Dog extends Animal{
+    override val creatureType:String = "Canine"
+    def eat:Unit = "crunch crunch"
+  }
+  
+  //traits : like abstract class in scala and interface in java
+  trait carnivore{
+    def eat(animal:Animal):Unit
+  }
+  class crocodile extends Animal with carnivore{
+    override val creatureType="Croc"
+    override def eat:Unit = "nomnom"
+    override def eat(animal:Animal):Unit = s"i am croc and i am eating ${animal.creatureType}"
+  }
+}
+
+
+Now I want to talk about the difference between treats versus abstract classes because 
+abstract classes can have abstract and non abstract types.
+but so can traits.
+
+//Traits do not have constructor parameters.
+// class can have multiple traints
+// trait describe behaviour
+
