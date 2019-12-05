@@ -38,4 +38,9 @@ But now if we define covariance as Trainer than it makes sence, trainer of anima
 class Trainer[-A]
 val trainer:Trainer[Cat] = new Trainer[Animal]
 
+
+// bounded type
+class cage[A <: Animal] // A can have a sub type of Animal. it is restriction on generic type
+
+
 }
