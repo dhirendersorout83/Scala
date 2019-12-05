@@ -1,0 +1,19 @@
+object Generics extends App{
+// 
+class MyList[A]{
+  // use type A
+}
+val mylist = Mylist[Integer];
+val mylist = Mylist[String];
+
+// traits can also be generic type but object can not have parameters but methods define in object can have
+
+object MyList{
+  def empty[A]:MyList[A]=???
+}
+val emptylist = MyList.empty[Integer] // using object method to define list
+
+// variance problem
+
+
+}
