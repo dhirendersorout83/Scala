@@ -14,6 +14,8 @@ object MyList{
 val emptylist = MyList.empty[Integer] // using object method to define list
 
 // variance problem
-
+class Animal
+Class Dog extends Animal
+Class Cat extends Animal
 
 }
