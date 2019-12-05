@@ -24,7 +24,7 @@ There posible three options
 class covariance[+A]
 val animal:Animal = new Cat
 val animallist:covariance[Animal]=new covariance[Cat]
-// question is : animallist.add(new Dog) : HARD QUESTION
+// question is : animallist.add(new Dog) : We return the list of animals which super type
 
 2 : NO: Invariance List. list[animal] is different from list[cat], can not substitute one for another
 class Invariance[A]
@@ -40,7 +40,23 @@ val trainer:Trainer[Cat] = new Trainer[Animal]
 
 
 // bounded type
-class cage[A <: Animal] // A can have a sub type of Animal. it is restriction on generic type
+class cage[A <: Animal](animal:A) // A can have a sub type of Animal. it is restriction on generic type
+val cage = new cage(new Dog) // valid
 
+val cage = new cage(new Car) // In-valid
+
+// question is : animallist.add(new Dog) : HARD QUESTION
+class MyList[A]{
+  def add(element:A): myList[A]  = ??? // this will give error 
+  //Even though my list is covariant and it's generic and the error that the compiler tells me is code variant
+  // covariant type accurs in contravariant position in type A of value element
+  // solution: if we add a Dog to list[cat] then List[cat] convert to list[animal] which is more generic
+  // for this we have to implement this logic 
+  def add[B >: A](animal:B):MyList[B]=???
+  /*
+  A = Cat
+  B= Dog = Animal
+  */
+}
 
 }
