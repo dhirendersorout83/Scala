@@ -1,0 +1,22 @@
+abstract class MyList{
+	def head:Int
+	def tail:MyList
+	def add(element:Int):MyList
+	def isEmpty:Boolean
+	def printElement:String
+	override def toString : String = "[" + printElement + "]"
+}
+object Empty extends MyList{
+	def head:Int= ???
+	def tail:MyList= ???
+	def add(element:Int):MyList= new Cons(element,Empty)
+	def isEmpty:Boolean=true
+	def printElement:String=""
+}
+class Cons(h:Int,t:MyList) extends MyList{
+	def head:Int=h
+	def tail:MyList=t
+	def add(element:Int):MyList=new Cons(element, this)
+	def isEmpty:Boolean=false
+	def printElement:String= if(t.isEmpty) h+"" else h+t.printElement
+}
