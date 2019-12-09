@@ -41,3 +41,17 @@ def fibo(n:Int):Int = {
   if x <=2 accu
   else fiboHelp(x-1,)
 }
+
+
+=================================
+Tail recurssive convertion for single for loop to increament any number
+
+def sumup(base: Long, itr: Long):Long = {
+	def sum(i: Long, accu: Long ):Long = {
+		if( i == 0) accu
+		 else
+			sum(i-1,accu+1)
+	}
+	sum(itr,base+0)
+}
+
