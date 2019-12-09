@@ -1,0 +1,22 @@
+While declaring the counter variable in the for loop definition the usage of "var" keyword is not required. The "<-" operator is used to assigning the counter variable in for loop
+for (i  <- 1 to 10)
+
+The range is assigned to the counter variable either using the "to" keyword or the "until" keyword. "to" keyword includes the last element in the range whereas the "until" keyword ignores the last element.
+Nested for loops are defined by defining another range in the same "for" statement. Both the range declaration are separated by a semicolon.
+for (i  <- 1 to 10; j <- 1 to 3){
+	println(i+ " " + j)
+}
+
+An "if" condition can be included in the "for" loop definition for filtering the required data from the range.
+for (i <- myList; if i < 6){
+	println(i)
+}
+
+A for loop can also be used as an expression returning values with the help of the "yield" keyword.
+var myList  =  for {i <- myList; i < 6} yield {
+			 i * 2
+}
+
+This code will filter all the elements less than 6 from myList and return the twice of the filtered numbers as a List.
+
+ 
