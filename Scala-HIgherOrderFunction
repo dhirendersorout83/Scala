@@ -1,0 +1,12 @@
+This is possible because functions are a first-class value in Scala. What does that mean?
+
+It means that functions can be passed as arguments to other functions, and functions can return other functions.
+
+The map function is a classic example of a higher order function.
+
+=============================================================
+def computeArea(l:Int=5, b:Int, f:(Int, Int) => Int) = f(l,b)
+computeArea(1,20,(x,y)=>x*y*y)
+400
+computeArea(1,20,(x,y)=>x*y)
+20
