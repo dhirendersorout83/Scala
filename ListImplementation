@@ -20,3 +20,30 @@ class Cons(h:Int,t:MyList) extends MyList{
 	def isEmpty:Boolean=false
 	def printElement:String= if(t.isEmpty) h+"" else h+t.printElement
 }
+
+
+
+Generic Implementaion of List
+================================================================
+abstract class MyList[+A]{
+	def head:A
+	def tail:MyList[A]
+	def add[B >: A](element:B):MyList[B]
+	def isEmpty:Boolean
+	def printElement:String
+	override def toString : String = "[" + printElement + "]"
+}
+object Empty extends MyList[Nothing]{
+	def head:Nothing= throw new NoSuchElementException
+	def tail:MyList[Nothing]= throw new NoSuchElementException
+	def add[B >: Nothing](element:B):MyList[B]= new Cons(element,Empty)
+	def isEmpty:Boolean=true
+	def printElement:String=""
+}
+class Cons[+A](h:A,t:MyList[A]) extends MyList[A]{
+	def head:A=h
+	def tail:MyList[A]=t
+	def add[B >: A](element:B):MyList[B]=new Cons(element, this)
+	def isEmpty:Boolean=false
+	def printElement:String= if(t.isEmpty) h + "" else h+","+t.printElement
+}
