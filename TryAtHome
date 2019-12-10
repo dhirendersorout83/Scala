@@ -1,1 +1,7 @@
-h
+1. Create generic MyPredicate[A] Trait with little test(A) = boolean
+2. Generic trait MyTransformer[A,B]
+3. MyList:
+  - map(myTransformer) => MyList
+  - filter(mypredicate) => MyList
+  - flatMap(Transformer from A to MyList[B] ) => MyList[B]
+  
