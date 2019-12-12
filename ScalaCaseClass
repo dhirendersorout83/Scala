@@ -1,0 +1,32 @@
+1. class parameters are fields
+case class Person(Name:String,age:Int)
+val p = new Person("Jin",34)
+
+2. sensible toString method, for normal class if we print instance.toString it prints some complex hashCode value for object
+println(p.toString) // Person("Jin",34)
+
+3. equals and hashCode implementation OOTB(Out of the box)
+val p2 = new Person("Jin",34)
+if I print 
+println(p==p2) // it will println true.
+
+but for normal class object , it would print false
+
+4. CCs have handy copy method
+val p3 = p2.copy()
+it also receive parameters
+val p3 = p2.copy(age = 45) //valid and return new instance of person with age 45
+
+5. CCs have companion object
+val p = Person
+
+also have some handy methods
+val p = Person("marry",30)
+
+6. CCs are serializable, very useful when using in distributed systems and in between JVMs
+
+7. CCs have extractor patterns = CCs can be used in PATTERN MATCHING
+
+We also have 
+case object , same properties as case classes except the companion objects as these are objects
+case object United
