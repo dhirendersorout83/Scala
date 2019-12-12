@@ -6,3 +6,22 @@ def :: adds the element to front of list
 def ::: concatenate two lists
 def apply(index) Return the element at index
 def diff(that) Return the element after removing the elements of 'that' list
+def drop(n) Returns the list without its n first elements. If this list has less than n elements, the empty list is returned.
+def dropRight(n) Returns the list wihout its rightmost n elements.
+
+def dropWhile(predicate => boolean) Returns the longest suffix of this list whose first element does not satisfy the predicate p. Subset of list starting from element which does not meet the predicate. subset can contain tail items which might satisfied the predicate
+scala> val list = List(2,2,2,2,5,2,2,2)
+list: List[Int] = List(2, 2, 2, 2, 5, 2, 2, 2)
+
+scala> list.dropWhile( x => { x%2 != 0 })
+res91: List[Int] = List(2, 2, 2, 2, 5, 2, 2, 2)
+
+scala> list.dropWhile( x => { x%2 == 0 })
+res92: List[Int] = List(5, 2, 2, 2)
+
+def elements():Iterator[A] Returns the elements in the list as an iterator
+//use list.iterator to get the iterator
+
+def exists (p : (A) => Boolean) : Boolean
+Tests the existence in this list of an element that satisfies the predicate p.
+
