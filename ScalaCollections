@@ -1,0 +1,8 @@
+Immutable
+
+List: Implemented by Singly linklist and SUITABLE FOR RECURSIVE ALGO THAT WORK WITH HEAD AND TAIL
+=================================================================================================
+def :: adds the element to front of list
+def ::: concatenate two lists
+def apply(index) Return the element at index
+def diff(that) Return the element after removing the elements of 'that' list
