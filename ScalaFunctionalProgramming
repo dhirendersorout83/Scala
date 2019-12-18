@@ -1,0 +1,5 @@
+ALL fucntions in scala is objects/ instances of class derived from Function1,Function2..etc
+Functions are first class elements:
+Like in oop language object/insatnce of class and variables are first class elements.
+same way in scala Funciton are also object of classes drived from Fucntion1,Function2..etc classes
+
