@@ -16,3 +16,38 @@ val superFunction: (int,(String,(Int => Boolean)) => Int) => (Int,Int) = ???
 // A function that applies n time on a value
 // nTimes(f,n,x)
 // ntime(f, 3, x) = f(f(f(x))) = nTimes(f, 2, f(x)) = 
+
+//increament by 1 function
+val onePlus:Int=>Int = x => x + 1
+
+//higher order fucntions
+def nTimes(f:Int=>Int, n:Int, x:Int):Int = if(n<=0) x else nTimes(f,n-1,f(x))
+//call
+nTimes(onePlus,10,1) output 11
+or
+nTimes(x=>x+1,10,1) output 11
+
+// another approach
+// ntp(f,n) = x => f(f(f(f.(x))))))
+//increament10 = ntp(onePlus,10) = x => onePlus(onePlus(onePlus(x)))
+// val y = increament10(1)
+nTimeBetter : return a lambda from function
+def nTimesBetter(f:Int=>Int,n:Int):(Int=>Int) = if (n<=0) (x:Int)=>x else (x:Int) => nTimesBetter(f,n-1)(f(x))
+//define lambda
+val plus10 = nTimesBetter(x=>x+1, 10)
+// call 
+plus10(1) output 11
+
+//this type of nTimesBetter(f,n-1)(f(x) of writting we noticed in 
+// curriedFucntions
+val supperAdder: Int => Int => Int = (x:int) => (y:Int) = > x +y
+//call 
+supperAdder(3)(10)
+
+//can can actually used to define sub function which we can actually apply later
+//like
+val add3 = supperAdder(3)
+
+add3(10) : output 13
+
+
