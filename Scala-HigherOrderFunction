@@ -10,3 +10,9 @@ computeArea(1,20,(x,y)=>x*y*y)
 400
 computeArea(1,20,(x,y)=>x*y)
 20
+
+val superFunction: (int,(String,(Int => Boolean)) => Int) => (Int,Int) = ???
+
+// A function that applies n time on a value
+// nTimes(f,n,x)
+// ntime(f, 3, x) = f(f(f(x))) = nTimes(f, 2, f(x)) = 
