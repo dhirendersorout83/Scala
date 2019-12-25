@@ -44,10 +44,45 @@ val supperAdder: Int => Int => Int = (x:int) => (y:Int) = > x +y
 //call 
 supperAdder(3)(10)
 
-//can can actually used to define sub function which we can actually apply later
+//this is very useful if we can can actually used to define sub function which we can actually apply later
 //like
 val add3 = supperAdder(3)
 
 add3(10) : output 13
 
+//funcitons with multiple parameter lists
+MULTIPLE PARAMETER LISTS (CURRYING)
+foldLeft applies a two-parameter function op to an initial value z and all elements of this collection, going left to right. Shown below is an example of its usage.
+Starting with an initial value of 0, foldLeft here applies the function (m, n) => m + n to each element in the List and the previous accumulated value.
+
+val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+val res = numbers.foldLeft(0)((m, n) => m + n)
+println(res) // 55
+
+USE CASE
+SINGLE FUNCTIONAL PARAMETER
+In case of a single functional parameter, like op in the case of foldLeft above, multiple parameter lists allow a concise syntax to pass an anonymous function to the method. Without multiple parameter lists, the code would look like this:
+
+numbers.foldLeft(0, (m: Int, n: Int) => m + n)
+Note that the use of multiple parameter lists here also allows us to take advantage of Scala type inference to make the code more concise, like this:
+
+numbers.foldLeft(0)(_ + _)
+this would not be possible with only a single parameter list, as the Scala compiler would not be able to infer the parameter types of the function.
+
+IMPLICIT PARAMETERS
+To specify only certain parameters as implicit, they must be placed in their own implicit parameter list.
+def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
+
+PARTIAL APPLICATION
+When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments. This is formally known as partial application.
+
+For example,
+val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+val numberFunc = numbers.foldLeft(List[Int]()) _
+
+val squares = numberFunc((xs, x) => xs :+ x*x)
+println(squares) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
+
+val cubes = numberFunc((xs, x) => xs :+ x*x*x)
+println(cubes)  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 
