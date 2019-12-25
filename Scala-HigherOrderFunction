@@ -54,6 +54,7 @@ add3(10) : output 13
 val curriedFormatter(s:String)(x:Double):String = c.format(x) 
 val standardFormat:(Double => String) = curriedFormatter("%4.2f") 
 
+To define smaller function , we have to mention types (doble => string)
 
 MULTIPLE PARAMETER LISTS (CURRYING)
 foldLeft applies a two-parameter function op to an initial value z and all elements of this collection, going left to right. Shown below is an example of its usage.
