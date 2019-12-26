@@ -12,6 +12,7 @@ computeArea(1,20,(x,y)=>x*y)
 20
 
 val superFunction: (int,(String,(Int => Boolean)) => Int) => (Int,Int) = ???
+SUPERfUNCITON TAKES FUCTIONS AS PARAMETER AND RETURN FUCNTION(INT => INT)
 
 // A function that applies n time on a value
 // nTimes(f,n,x)
@@ -51,8 +52,10 @@ val add3 = supperAdder(3)
 add3(10) : output 13
 
 //funcitons with multiple parameter lists
-val curriedFormatter(s:String)(x:Double):String = c.format(x) 
+def curriedFormatter(s:String)(x:Double):String = s.format(x) 
 val standardFormat:(Double => String) = curriedFormatter("%4.2f") 
+//call 
+standardFormat(Math.PI)
 
 To define smaller function , we have to mention types (doble => string)
 
