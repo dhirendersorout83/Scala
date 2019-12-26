@@ -45,6 +45,21 @@ val supperAdder: Int => Int => Int = (x:int) => (y:Int) = > x +y
 //call 
 supperAdder(3)(10)
 
+FUCNTION TAKES MULTIPLE PARAMETER LIST AND RETURN FUCNTION
+def nTimes(f:(BigInt => BigInt),n:Int):(BigInt=>BigInt) = if ( n<=0 ) (x:BigInt)=>x else (x:BigInt) => nTimes(f,n-1)(f(x))
+
+VAL increamentBy10 = nTimes(x=>x+1,10)
+increamentBy10(5) output 15
+
+val power4 = nTimes(x=>x*x,2)
+power4(5) output 625
+power4(2) output 16
+
+likewise cube etc
+
+
+
+
 //this is very useful if we can can actually used to define sub function which we can actually apply later
 //like
 val add3 = supperAdder(3)
