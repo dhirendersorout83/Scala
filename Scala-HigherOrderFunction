@@ -71,7 +71,25 @@ def curriedFormatter(s:String)(x:Double):String = s.format(x)
 val standardFormat:(Double => String) = curriedFormatter("%4.2f") 
 //call 
 standardFormat(Math.PI)
+def mywhile(testCondition: => Boolean)(codeBlock: => Unit) {
+if (testCondition) {
+codeBlock
+mywhile(testCondition)(codeBlock)
+}
+}
 
+def nTimes(f:(Int => Int),n:Int)(x:Int):Int = if ( n<=0 ) f(x) else nTimes(f,n-1)(f(x))
+ntime(x=>x*x,n)(2) output 256
+
+but
+def nTimes(f:(Int => Int),n:Int)(x:Int):Int = if ( n<=0 ) f(x) else nTimes(f,n-1)(x)
+ntime(x=>x*x,n)(5) output 25
+def myfor(x:Int,y:Int)(condition: =>Boolean)(code: => Int) {
+	if(condition && x <= y ){ 
+		code
+		myfor(x+1,y)(condition)(code)
+	}
+}
 To define smaller function , we have to mention types (doble => string)
 
 MULTIPLE PARAMETER LISTS (CURRYING)
