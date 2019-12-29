@@ -93,3 +93,100 @@ show(prod(sum(num(1),num(2)),num(2)))
 
 show(prod(sum(num(1),num(2)),sum(num(1),num(2))))
 show(prod(sum(num(1),num(2)),prod(num(1),num(2))))
+==================================================================================
+
+
+
+All THE PATTERNS
+------------------------
+1. constants
+object AllThePattern extends App{
+val x :Any = "scala"
+val constants = x match{
+case 1 => "a number"
+case "scala" => "the scala"
+case true => "the truth"
+case AllThePattern => "singleton object"
+ }
+ 
+ 2. Matching Anything
+ 2.1. wild card
+ val wildcard = x match{
+ case _ => 
+ }
+ 
+ 2.2 variable
+ val matchAVariable = x match{
+ 	case something => s" we can latter access $something"
+ }
+ 
+ 2.3 tuples
+ val atuple =(1,2)
+ val matchTuple = atuple match {
+ 	case (1,1) => "found 1 1"
+	case (something,2) => s"found $something"
+	case (_,(1,v)) => "nested tuple found $v" // nested tuple in pattern matching
+ }
+ 
+ 2.4 case class / constructor pattern
+ 
+ 
+ 2.5 list pattern
+ val slist =List(1,2,3,4)
+ val smatch = slist match{
+ 	case List(1,_,_,_) => ""
+	case List(1,_*) => "arbitrary length list"
+	case 1::List(_) => infix pattern
+	case List(1,2,3) :+ 42 => //infix pattern
+ }
+ 
+ 2.6 type specifier
+ val unknown :Any = 2
+ val unknownMatch = unknown match{
+ 	case list:List[Int] => 
+	case _ => 
+ }
+ 
+ 2.7 name binding
+ val namebindingmatch = alist match{
+ 	case nonempty @ cons(_,_) => "use the name later here"
+	case cons(1, rest @ cons(2,_) ) => "nested name binding"
+ }
+ 
+ 2.8 multi pattern : use pipe(|) operators logical OR
+ case empty | case (0,_) => 
+ 
+ 2.9 if gard
+ val sepcialElement = alist match{
+ 	case cons (1,cons(specialele,_)) if specialele % 2 == 0 => 
+ }
+ 
+ 
+ HARD QUESTION:
+ val numbers = List(1,2,3,4)
+ val numMatch = numbers match{
+ case listOfString:List[String] => "a string list"
+ case listOfNumber:List[Number] => "a number list"
+ case _ => ""
+ }
+ println(numMatch) // output will be "a string list " instead of "a number list"
+ BECAUSE
+So long story short is that the JVM was designed for the Java language but the Java language was also
+designed with backwards compatibility in mind.
+So basically a Java 9 program right now where a Java 9 JVM can run a Java one program written 20 years
+ago which is pretty darn cool.
+I'll give them credit for that.
+But at Java one Java did not have generic parameters.
+Generics were introduced in Java 5.
+
+And to make the JVM compatible with Java one Java 5 compiler is raised all generic types after type
+checking which makes the JVM absolutely oblivious to generic types Skala also suffers from this fault
+because the JVM was designed in this way.
+
+So basically after type checking our pattern match expressions looks like this because our type parameters
+just are erased like that and when the pattern match looks like this then suddenly everything makes
+sense because numbers is a list and a list matches a list which returns a list of strings.
+Right.
+
+
+ }
