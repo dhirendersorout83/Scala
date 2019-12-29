@@ -12,3 +12,4 @@ create patter:
 with NOt [^0-9a-zA-Z]
 {} to mention no of iteration eg 2 digit no [0-9]{2} or (\d){2} or 0 or 2 time, more time {0,2} {0,} leave blank for more
 () making group of character eg date "(\d\d)-(\d\d)-(\d\d\d\d)"
+. for any character eg first two chara are num and rest can any "(\d){2}."
