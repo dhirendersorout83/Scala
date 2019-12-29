@@ -1,0 +1,14 @@
+DEFINE PATTERN:
+we import Regex class:scala.util.matching.Regex to deifne new patter
+or
+use (.r) with pattern string
+
+val mypatern = "(\d)".r
+or
+val numPattern = new Regex("[0-9]+")
+
+create patter:
+[] - define a range for num/char eg [0-9a-zA-Z] 
+with NOt [^0-9a-zA-Z]
+{} to mention no of iteration eg 2 digit no [0-9]{2} or (\d){2} or 0 or 2 time, more time {0,2} {0,} leave blank for more
+() making group of character eg date "(\d\d)-(\d\d)-(\d\d\d\d)"
