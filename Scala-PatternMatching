@@ -13,3 +13,56 @@ with NOt [^0-9a-zA-Z]
 {} to mention no of iteration eg 2 digit no [0-9]{2} or (\d){2} or 0 or 2 time, more time {0,2} {0,} leave blank for more
 () making group of character eg date "(\d\d)-(\d\d)-(\d\d\d\d)"
 . for any character eg first two chara are num and rest can any "(\d){2}."
+
+==============================================================
+
+Methods of pattern class
+val address = "123 Main Street Suite 101"
+numPattern = new Regex("[0-9]+")
+
+val match1 = numPattern.findFirstIn(address)
+val match1 = numPattern.findFirstIn(address)
+
+
+1.7. Replacing Patterns in Strings
+
+You can call replaceAll on a String, remembering to assign the result to a new variable:
+val address = "123 Main Street".replaceAll("[0-9]", "x")
+
+You can create a regular expression and then call replaceAllIn on that expression
+val regex = "[0-9]".r
+val newAddress = regex.replaceAllIn("123 Main Street", "x")
+
+
+1.8. Extracting Parts of a String That Match Patterns
+You want to extract one or more parts of a string that match the regular-expression
+patterns you specify.
+Define the regular-expression patterns you want to extract, placing parentheses around
+them so you can extract them as “regular-expression groups.” First, define the desired
+pattern:
+val pattern = "([0-9]+) ([A-Za-z]+)".r
+scala> val pattern(count, fruit) = "100 Bananas"
+count: String = 100
+fruit: String = Bananas
+
+count and fruit are variables and 
+
+For example purposes, you’ll just allow these two simplified patterns:first patter get store in count and second in fruit
+
+// match "movies 80301"
+val MoviesZipRE = "movies (\\d{5})".r
+// match "movies near boulder, co"
+val MoviesNearCityStateRE = "movies near ([a-z]+), ([a-z]{2})".r
+
+Once you’ve defined the patterns you want to allow, you can match them against whatµ
+ever text the user enters, using a match expression. In this example, you’ll call a fictional
+method named getSearchResults when a match occurs:
+textUserTyped match {
+case MoviesZipRE(zip) => getSearchResults(zip)
+case MoviesNearCityStateRE(city, state) => getSearchResults(city, state)
+case _ => println("did not match a regex")
+}
+
+NOTE: WE CAN DIRECTLY GET THE PATTER VALUE IN VARIABLES
+
+
