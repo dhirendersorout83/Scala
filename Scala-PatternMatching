@@ -65,4 +65,31 @@ case _ => println("did not match a regex")
 
 NOTE: WE CAN DIRECTLY GET THE PATTER VALUE IN VARIABLES
 
+EXAMPLE OF CASE CLASS
+val personMatch = Person("dhirender",36) match{case Person(n,a) => s"Hi, I am $n and I am $a years old"; case _ => "not matched";}
 
+trait expr
+case class sum(a:expr,b:expr) extends expr
+case class prod(a:expr,b:expr) extends expr
+case class num(a:Int) extends expr
+
+def show(e:expr):String = e match{
+case sum(e1,e2) => show(e1)+" + "+show(e2)
+case num(n) => s"$n"
+case prod(e1,e2) =>{
+	def maybeshowparentheses(exp :expr) = exp match{
+		case prod(_,_) => show(exp)
+		case num(_) => show(exp)
+		case _ => "(" +show(exp)+")"
+		}
+	maybeshowparentheses(e1) + "*" + maybeshowparentheses(e2)
+	} 
+}
+
+//call
+show(sum(num(1),num(2)))
+
+show(prod(sum(num(1),num(2)),num(2)))
+
+show(prod(sum(num(1),num(2)),sum(num(1),num(2))))
+show(prod(sum(num(1),num(2)),prod(num(1),num(2))))
